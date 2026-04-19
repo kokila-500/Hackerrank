@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <numeric>
+
+int main() {
+    int n, q;
+    // Read the number of variable-length arrays (n) and the number of queries (q)
+    std::cin >> n >> q;
+
+    // Declare a vector of vectors to store the variable-length arrays
+    std::vector<std::vector<int>> outer_array(n);
+
+    // Read and populate the variable-length arrays
+    for (int i = 0; i < n; ++i) {
+        int k;
+        // Read the size of the current inner array
+        std::cin >> k;
+        // Resize the current inner vector to hold k elements
+        outer_array[i].resize(k);
+        // Read k integers into the current inner array
+        for (int j = 0; j < k; ++j) {
+            std::cin >> outer_array[i][j];
+        }
+    }
+
+    // Process the queries
+    for (int queries = 0; queries < q; ++queries) {
+        int i, j;
+        // Read the outer index (i) and inner index (j) for the query
+        std::cin >> i >> j;
+        // Print the element at the specified location
+        std::cout << outer_array[i][j] << std::endl;
+    }
+
+    return 0;
+}
